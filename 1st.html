@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SULEMAN KHAN</title>
+  <meta name="description" content="Modern portfolio — Your Name. Web design, front-end development, UI/UX."/>
+  <style>
+    /* ============================
+       Variables & Reset
+       ============================ */
+    :root{
+      --bg: #0f1724;
+      --card: #0b1320;
+      --muted: #9aa4b2;
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --glass: rgba(255,255,255,0.04);
+      --text: #e6eef6;
+      --radius: 14px;
+      --max-width: 1100px;
+      --fw-normal: 500;
+      --fw-strong: 700;
+    }
+
+    [data-theme="light"]{
+      --bg: #f3f7fb;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #5b21b6;
+      --accent-2: #0ea5a4;
+      --glass: rgba(0,0,0,0.03);
+      --text: #0b1320;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 400px at 10% 10%, rgba(124,92,255,0.08), transparent),
+                  linear-gradient(180deg, var(--bg), color-mix(in srgb, var(--bg) 95%, black 5%));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding:48px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .container{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    /* ============================
+       NAV
+       ============================ */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:36px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow:0 6px 18px rgba(11,14,20,0.6);
+      display:inline-grid;
+      place-items:center;
+      font-weight:800;
+      font-size:18px;
+      color:white;
+    }
+
+    nav{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:var(--fw-normal);
+      padding:8px 10px;
+      border-radius:10px;
+    }
+
+    nav a:hover{color:var(--text); background:var(--glass)}
+
+    .actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .btn{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:white;
+      padding:8px 12px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow:0 6px 20px rgba(92,60,170,0.12);
+    }
+
+    .icon-btn{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:8px;
+      border-radius:10px;
+      color:var(--muted);
+      cursor:pointer;
+    }
+
+    /* Mobile nav toggle */
+    .hamburger{
+      display:none;
+    }
+
+    /* ============================
+       HERO
+       ============================ */
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:28px;
+      align-items:center;
+      margin-bottom:42px;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:32px;
+      border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .hero h1{
+      margin:0 0 8px 0;
+      font-size:28px;
+      letter-spacing:-0.4px;
+    }
+
+    .hero p.lead{
+      margin:0 0 18px 0;
+      color:var(--muted);
+    }
+
+    .cta-row{display:flex; gap:12px; margin-top:8px}
+    .socials{display:flex; gap:10px; margin-top:16px}
+
+    .profile{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      border-radius:20px;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+      text-align:center;
+      box-shadow: 0 10px 30px rgba(124,92,255,0.12);
+    }
+
+    .avatar{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      background:
+        conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,0.06), transparent),
+        linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.02));
+      display:block;
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      font-weight:700;
+      font-size:44px;
+      color:white;
+      box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    }
+
+    .profile h3{margin:0}
+    .profile p{margin:0;color:var(--muted); font-size:14px}
+
+    /* ============================
+       SECTIONS
+       ============================ */
+    section{margin-bottom:36px}
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:12px;
+      margin-bottom:16px;
+    }
+
+    .section-head h2{margin:0; font-size:18px}
+    .section-head a{color:var(--muted); font-size:14px; text-decoration:none}
+
+    /* Projects grid */
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:16px;
+    }
+
+    .card{
+      background:var(--card);
+      padding:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.03);
+      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+      cursor:default;
+      overflow:hidden;
+    }
+
+    .project-thumb{
+      height:160px;
+      border-radius:10px;
+      margin-bottom:12px;
+      display:block;
+      background-image: linear-gradient(135deg, rgba(255,255,255,0.02), transparent);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .project-thumb::after{
+      content:"";
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent, rgba(0,0,0,0.25));
+    }
+
+    .card:hover{ transform:translateY(-8px); box-shadow:0 18px 50px rgba(2,6,23,0.6);}
+
+    .meta{display:flex; justify-content:space-between; align-items:center; gap:8px}
+    .meta .tags{color:var(--muted); font-size:13px}
+    .meta .title{font-weight:600}
+
+    /* Skills */
+    .skills{display:flex; gap:12px; flex-wrap:wrap}
+    .skill{background:var(--glass); padding:8px 10px; border-radius:999px; color:var(--muted); font-weight:600; font-size:13px}
+
+    /* Contact */
+    form{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+
+    form .full{grid-column:1/-1}
+    input,textarea{
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      padding:12px;
+      border-radius:10px;
+      color:var(--text);
+      font-size:14px;
+      outline:none;
+    }
+
+    textarea{min-height:120px; resize:vertical}
+
+    .muted{color:var(--muted); font-size:13px}
+
+    footer{ color:var(--muted); font-size:13px; margin-top:18px; text-align:center}
+
+    /* Modal (lightbox) */
+    .modal{
+      position:fixed;
+      left:0;top:0;right:0;bottom:0;
+      display:none;
+      align-items:center; justify-content:center;
+      background:rgba(2,6,23,0.6);
+      z-index:60;
+      padding:24px;
+    }
+    .modal.open{display:flex}
+    .modal-card{
+      width:min(900px,96%);
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+    }
+    .modal-card img{width:100%; border-radius:8px; display:block}
+
+    /* Responsive */
+    @media (max-width:1050px){
+      .hero{ grid-template-columns: 1fr 320px }
+      .grid{ grid-template-columns: repeat(2,1fr) }
+    }
+
+    @media (max-width:800px){
+      header{align-items:flex-start; gap:8px}
+      .hero{ grid-template-columns:1fr; gap:18px }
+      nav{display:none}
+      .hamburger{display:inline-flex}
+      .grid{ grid-template-columns:1fr; }
+      form{ grid-template-columns:1fr; }
+      .profile{ padding:16px }
+    }
+
+    /* small helpers */
+    .muted-link{ color:var(--muted); text-decoration:none }
+    a{color:inherit}
+  </style>
+</head>
+<body>
+  <div class="container" id="page">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">SK</div>
+        <div>
+          <div style="font-weight:700">SULEMAN KHAN</div>
+          <div style="font-size:12px; color:var(--muted)">Designer • Front-end dev</div>
+        </div>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="#projects">Portfolio pages</a>
+        <a href="#about">the student of software</a>
+        <a href="#skills">Web developer</a>
+        <a href="#contact">03289071628</a>
+      </nav>
+
+      <div class="actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">🌙</button>
+        <a class="btn" href="#contact">Hire me</a>
+        <button class="hamburger icon-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Hi — I'm <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:800">SULEMAN KHAN</span></h1>
+          <p class="lead">I design and build accessible front-end experiences. I love motion, clean UI, and delightful micro-interactions.</p>
+
+          <div class="cta-row">
+            <a class="btn" href="#projects">See projects</a>
+            <a class="muted-link" href="#about">Read my story →</a>
+          </div>
+
+          <div class="socials" aria-hidden="false" style="margin-top:16px">
+            <a class="muted-link" href="#" aria-label="GitHub">GitHub</a> ·
+            <a class="muted-link" href="#" aria-label="LinkedIn">LinkedIn</a> ·
+            <a class="muted-link" href="#" aria-label="Twitter">Twitter</a>
+          </div>
+        </div>
+
+        <aside class="profile" aria-label="Profile card">
+          <div class="avatar" aria-hidden="true">SK</div>
+          <h3>SULEMAN KHAN</h3>
+          <p>Frontend Developer • UI Engineer</p>
+          <div style="display:flex; gap:8px">
+            <div style="text-align:center">
+              <div style="font-weight:700">5+</div>
+              <div class="muted" style="font-size:12px">Years experience</div>
+            </div>
+            <div style="text-align:center">
+              <div style="font-weight:700">20+</div>
+              <div class="muted" style="font-size:12px">Projects</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects">
+        <div class="section-head">
+          <h2>Selected projects</h2>
+          <a href="#" class="muted">View all projects</a>
+        </div>
+
+        <div class="grid" id="projectsGrid">
+          <!-- Project 1 -->
+          <article class="card">
+            <div class="project-thumb" data-title="Dashboard UI" data-desc="A responsive analytics dashboard UI" data-img="https://via.placeholder.com/1000x600/7c5cff/ffffff?text=Project+1"></div>
+            <div class="meta">
+              <div>
+                <div class="title">Dashboard UI</div>
+                <div class="tags">React • Tailwind • Charts</div>
+              </div>
+              <div style="font-size:12px; color:var(--muted)">2024</div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="card">
+            <div class="project-thumb" data-title="E-commerce site" data-desc="Modern product pages with cart UX" data-img="https://via.placeholder.com/1000x600/00d4ff/002b33?text=Project+2"></div>
+            <div class="meta">
+              <div>
+                <div class="title">E-commerce</div>
+                <div class="tags">Next.js • Stripe • UX</div>
+              </div>
+              <div style="font-size:12px; color:var(--muted)">2023</div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="card">
+            <div class="project-thumb" data-title="Portfolio site" data-desc="This portfolio template — built for speed" data-img="https://via.placeholder.com/1000x600/ffd166/2b1f00?text=Project+3"></div>
+            <div class="meta">
+              <div>
+                <div class="title">Portfolio Template</div>
+                <div class="tags">HTML • CSS • Design</div>
+              </div>
+              <div style="font-size:12px; color:var(--muted)">2025</div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-head">
+          <h2>About</h2>
+          <a class="muted" href="#">Download CV</a>
+        </div>
+
+        <div class="hero-card" style="display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap">
+          <div style="flex:1">
+            <p class="muted">I’m a front-end developer focused on creating delightful interfaces that solve real user problems. I work with teams to ship production-ready UI, optimize interactions, and make complex flows feel simple.</p>
+            <ul style="margin-top:12px; color:var(--muted)">
+              <li>Design systems & component libraries</li>
+              <li>Performance & accessibility audits</li>
+              <li>Prototyping & motion design</li>
+            </ul>
+          </div>
+          <div style="min-width:220px">
+            <div style="background:var(--glass); padding:12px; border-radius:10px">
+              <div style="font-weight:700">Open to work</div>
+              <div class="muted" style="font-size:13px">Available for freelance and full-time roles</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills">
+        <div class="section-head">
+          <h2>Skills</h2>
+          <a class="muted" href="#">Certifications</a>
+        </div>
+
+        <div class="hero-card">
+          <div class="skills" aria-hidden="false">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">JavaScript</span>
+            <span class="skill">React</span>
+            <span class="skill">TypeScript</span>
+            <span class="skill">Accessibility</span>
+            <span class="skill">Design Systems</span>
+            <span class="skill">Figma</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <a class="muted" href="#"> hi- msk9071628@gmail.com</a>
+        </div>
+
+        <div class="hero-card">
+          <form id="contactForm" onsubmit="event.preventDefault()">
+            <input name="name" placeholder="Your name" required />
+            <input name="email" placeholder="Email address" type="email" required />
+            <input class="full" name="subject" placeholder="Subject" />
+            <textarea class="full" name="message" placeholder="Message" required></textarea>
+            <div style="display:flex; gap:10px; align-items:center">
+              <button class="btn" type="submit">Send message</button>
+              <div class="muted">I'll reply within 2–3 business days.</div>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> SULEMAN KHAN— Built with ❤️ & CSS
+      </footer>
+    </main>
+  </div>
+
+  <!-- Modal for project preview -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card" role="document">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px">
+        <div>
+          <strong id="modalTitle">Title</strong>
+          <div id="modalDesc" class="muted" style="font-size:13px">Description</div>
+        </div>
+        <button id="closeModal" class="icon-btn" aria-label="Close">✕</button>
+      </div>
+      <img id="modalImg" alt="Project preview" src="" />
+    </div>
+  </div>
+
+  <script>
+    // Basic interactions: theme toggle, mobile nav, modal previews
+    (function(){
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const menuBtn = document.getElementById('menuBtn');
+      const nav = document.querySelector('nav');
+      const yearSpan = document.getElementById('year');
+
+      // Set initial year
+      yearSpan.textContent = new Date().getFullYear();
+
+      // Theme toggle (persists in localStorage)
+      function setTheme(theme){
+        document.body.setAttribute('data-theme', theme);
+        themeToggle.textContent = theme === 'light' ? '🌞' : '🌙';
+        try { localStorage.setItem('theme', theme) } catch(e){}
+      }
+      const saved = (function(){try{return localStorage.getItem('theme')}catch(e){return null}})();
+      setTheme(saved || 'dark');
+      themeToggle.addEventListener('click', ()=> setTheme(document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light'));
+
+      // Mobile menu
+      menuBtn.addEventListener('click', ()=> {
+        const isShown = nav.style.display === 'flex';
+        nav.style.display = isShown ? '' : 'flex';
+      });
+
+      // Project lightbox
+      const thumbs = document.querySelectorAll('.project-thumb');
+      const modal = document.getElementById('modal');
+      const modalImg = document.getElementById('modalImg');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDesc = document.getElementById('modalDesc');
+      const closeModal = document.getElementById('closeModal');
+
+      thumbs.forEach(t => {
+        // create simple placeholder backgrounds using CSS gradients + data attributes
+        const bg = t.dataset.img || '';
+        t.style.background = bg ? `url(${bg}) center/cover no-repeat` : 'linear-gradient(135deg,#222,#444)';
+        t.addEventListener('click', ()=> {
+          modalImg.src = bg;
+          modalTitle.textContent = t.dataset.title || 'Project';
+          modalDesc.textContent = t.dataset.desc || '';
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden','false');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      closeModal.addEventListener('click', close);
+      modal.addEventListener('click', (e)=> { if(e.target === modal) close()})
+      document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') close() });
+
+      function close(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+
+      // Small: show pointer cursor on clickable cards
+      document.querySelectorAll('.card').forEach(c => c.style.cursor = 'pointer');
+
+      // Contact form simple feedback
+      const form = document.getElementById('contactForm');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        btn.textContent = 'Sent ✓';
+        btn.disabled = true;
+        setTimeout(()=> {
+          btn.textContent = 'Send message';
+          btn.disabled = false;
+          form.reset();
+        }, 1800);
+      });
+
+    })();
+  </script>
+</body>
+</html>
